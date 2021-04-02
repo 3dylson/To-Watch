@@ -9,6 +9,10 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 export default function ListScreen() {
   const [serie, setSerie] = React.useState();
 
+  const handleAddSerie = () => {
+    console.log(serie);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.tasksWrapper}>
@@ -25,9 +29,10 @@ export default function ListScreen() {
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}>
-          <TextInput style={styles.input} placeholder={'What are you watching?'}/>
+          <TextInput style={styles.input} placeholder={'What are you watching?'} value={serie} 
+          onChangeText={(text:any) => setSerie(text)}/>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => handleAddSerie()}>
             <View style={styles.addWrapper}>
               <Text style={styles.addText}>+</Text>
             </View>
