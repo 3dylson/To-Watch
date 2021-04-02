@@ -9,7 +9,7 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}>My series 😍 </Text>
+        {/* <Text style={styles.sectionTitle}>My series 😍 </Text> */}
 
         <View style={styles.items}>
           {/*This is where the series will go!*/}  

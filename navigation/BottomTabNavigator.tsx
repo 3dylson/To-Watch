@@ -5,9 +5,9 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import ListScreen from '../screens/ListScreen';
+import TrendsScreen from '../screens/TrendsScreen';
+import { BottomTabParamList, ListParamList, TrendsParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -16,20 +16,20 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="List"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="List"
+        component={ListNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="tv" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="film" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Trends"
+        component={TrendsNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="trending-up" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -44,30 +44,30 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const ListStack = createStackNavigator<ListParamList>();
 
-function TabOneNavigator() {
+function ListNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <ListStack.Navigator>
+      <ListStack.Screen
+        name="ListScreen"
+        component={ListScreen}
+        options={{ headerTitle: 'My series 🍿' }}
       />
-    </TabOneStack.Navigator>
+    </ListStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const TrendsStack = createStackNavigator<TrendsParamList>();
 
-function TabTwoNavigator() {
+function TrendsNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <TrendsStack.Navigator>
+      <TrendsStack.Screen
+        name="TrendsScreen"
+        component={TrendsScreen}
+        options={{ headerTitle: 'What is next on the list? 🥰 ' }}
       />
-    </TabTwoStack.Navigator>
+    </TrendsStack.Navigator>
   );
 }
