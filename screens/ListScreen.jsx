@@ -1,6 +1,6 @@
 import { HeaderStyleInterpolators } from '@react-navigation/stack';
 import * as React from 'react';
-import { KeyboardAvoidingView, Platform, StyleSheet, Text, } from 'react-native';
+import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, } from 'react-native';
 
 import { View } from '../components/Themed';
 import Serie from '../components/Serie';
@@ -8,9 +8,12 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function ListScreen() {
   const [serie, setSerie] = React.useState();
+  const [serieItems, setSerieItems] = React.useState([]);
 
   const handleAddSerie = () => {
-    console.log(serie);
+    Keyboard.dismiss();
+    setSerieItems([...serieItems, serie ])
+    setSerie(null);
   }
 
   return (
@@ -18,8 +21,11 @@ export default function ListScreen() {
       <View style={styles.tasksWrapper}>
         <View style={styles.items}>
           {/*This is where the series will go!*/}  
-          <Serie text={'Jujutsu Kaisen'}/>
-          <Serie text={'Attack on Titan'}/>
+          {
+            serieItems.map((item, index) => {
+              return <Serie key={index} text={item}/>
+            })
+          }
         </View>
 
       </View>
@@ -30,7 +36,7 @@ export default function ListScreen() {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}>
           <TextInput style={styles.input} placeholder={'What are you watching?'} value={serie} 
-          onChangeText={(text:any) => setSerie(text)}/>
+          onChangeText={text => setSerie(text)}/>
 
           <TouchableOpacity onPress={() => handleAddSerie()}>
             <View style={styles.addWrapper}>
