@@ -1,15 +1,23 @@
+import { HeaderStyleInterpolators } from '@react-navigation/stack';
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import Serie from '../components/Serie';
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>App para anotar séries!</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <View style={styles.tasksWrapper}>
+        <Text style={styles.sectionTitle}>My series 😍 </Text>
+
+        <View style={styles.items}>
+          {/*This is where the series will go!*/}  
+          <Serie text={'Serie 1'}/>
+          <Serie text={'Serie 2'}/>
+        </View>
+
+      </View>
     </View>
   );
 }
@@ -17,8 +25,7 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  
   },
   title: {
     fontSize: 20,
@@ -29,4 +36,13 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  tasksWrapper:{
+    paddingTop: 80,
+    paddingHorizontal: 20,
+  },
+  sectionTitle:{
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+items:{},
 });
