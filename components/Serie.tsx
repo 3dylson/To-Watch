@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Text, View } from './Themed';
+// import { Text, View } from './Themed';
 
 const Serie = (props: any) => {
 
@@ -38,10 +38,20 @@ const styles = StyleSheet.create({
      height: 24,
      backgroundColor: '#55BCF6',
      opacity: 0.4,
-     
+     borderRadius: 5,   
+     marginRight: 15,
+
  },
- itemText:{},
- circular:{},
+ itemText:{
+     maxWidth:'80%',
+ },
+ circular:{
+     width: 12,
+     height: 12,
+     borderColor: '#55BCF6',
+     borderWidth: 2,
+     borderRadius: 5,
+ },
 
 })
 

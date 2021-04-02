@@ -9,15 +9,18 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.tasksWrapper}>
-        {/* <Text style={styles.sectionTitle}>My series 😍 </Text> */}
-
         <View style={styles.items}>
           {/*This is where the series will go!*/}  
-          <Serie text={'Serie 1'}/>
-          <Serie text={'Serie 2'}/>
+          <Serie text={'Jujutsu Kaisen'}/>
+          <Serie text={'Attack on Titan'}/>
         </View>
 
       </View>
+
+      {/*Write a serie*/}
+
+      
+
     </View>
   );
 }
@@ -44,5 +47,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
   },
-items:{},
+items:{
+  marginTop: 30,
+},
 });
