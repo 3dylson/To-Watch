@@ -16,6 +16,12 @@ export default function ListScreen() {
     setSerie(null);
   }
 
+  const completeSerie = (index) => {
+    let itemsCopy = {...serieItems};
+    itemsCopy.splice(index,1);
+    setSerieItems(itemsCopy);
+  } 
+
   return (
     <View style={styles.container}>
       <View style={styles.tasksWrapper}>
@@ -23,7 +29,11 @@ export default function ListScreen() {
           {/*This is where the series will go!*/}  
           {
             serieItems.map((item, index) => {
-              return <Serie key={index} text={item}/>
+              return(
+                <TouchableOpacity key={index} onPress={() => completeSerie(index)}>
+                  <Serie text={item}/>
+                </TouchableOpacity>
+              )                              
             })
           }
         </View>
